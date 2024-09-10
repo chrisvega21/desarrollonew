@@ -1,0 +1,86 @@
+/* Estilo para la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa; /* Fondo azul claro */
+    color: #01579b; /* Azul oscuro para el texto */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #0288d1; /* Título principal en azul vibrante */
+    font-size: 3rem;
+    margin-top: 50px;
+}
+
+h3 {
+    color: #0277bd; /* Subtítulos en azul intermedio */
+    font-size: 1.5rem;
+}
+
+table {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #b3e5fc; /* Fondo de tabla azul claro */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    border: 2px solid #0288d1;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0277bd;
+    box-shadow: 0px 0px 8px rgba(2, 119, 189, 0.5);
+}
+
+/* Estilo de botones */
+button {
+    background-color: #0288d1; /* Azul vibrante */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0277bd;
+    transform: scale(1.05); /* Efecto de agrandamiento */
+}
+
+button:active {
+    background-color: #01579b; /* Cambio de color al presionar */
+    transform: scale(1);
+}
+
+/* Adaptabilidad para dispositivos móviles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    input, button {
+        font-size: 1rem;
+    }
+}

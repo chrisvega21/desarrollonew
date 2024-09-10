@@ -1,0 +1,70 @@
+/* Estilos básicos */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #0288d1;
+}
+
+.product-section {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+.product-image img {
+    max-width: 150px;
+    border-radius: 8px;
+}
+
+.product-details {
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.product-details h2 {
+    color: #0288d1;
+    margin-bottom: 10px;
+}
+
+.product-details p {
+    margin: 5px 0;
+}
+
+input {
+    width: 60px;
+    padding: 5px;
+}
+
+.button-group {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0277bd;
+}
+
+button:active {
+    background-color: #01579b;
+}

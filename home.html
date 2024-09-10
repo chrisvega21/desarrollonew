@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Accesorios para Autos</title>
+    <link rel="stylesheet" href="prueba.css">
+</head>
+<body>
+    <header>
+        <h1>Tienda de Accesorios para Autos</h1>
+    </header>
+    
+    <div id="product-list" class="container"></div>
+
+    <script>
+        // Cargar productos desde el archivo JSON
+        fetch('productos.json')
+            .then(response => response.json())
+            .then(products => {
+                const productList = document.getElementById('product-list');
+
+                // Crear el HTML dinámicamente para cada producto
+                products.forEach(product => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product-card');
+                    productDiv.innerHTML = `
+                        <img src="img/${product.id}.png" alt="${product.id}" class="product-image">
+                        <h2>${product.id}</h2>
+                        <p>Stock: <span id="stock-${product.id}">${product.stock}</span></p>
+                        <input type="number" id="quantity-${product.id}" value="1" min="1" class="quantity-input"/>
+                        <div class="btn-group">
+                            <button id="buy-btn-${product.id}" class="btn buy-btn">Comprar</button>
+                            <button id="cancel-btn-${product.id}" class="btn cancel-btn">Cancelar</button>
+                        </div>
+                    `;
+                    productList.appendChild(productDiv);
+                });
+
+                // Manejar las compras y actualizaciones de stock
+                products.forEach(product => {
+                    const buyBtn = document.getElementById(`buy-btn-${product.id}`);
+                    const cancelBtn = document.getElementById(`cancel-btn-${product.id}`);
+                    const quantityInput = document.getElementById(`quantity-${product.id}`);
+                    const stockElement = document.getElementById(`stock-${product.id}`);
+
+                    buyBtn.addEventListener('click', () => {
+                        const quantity = parseInt(quantityInput.value);
+
+                        if (quantity <= product.stock && quantity > 0) {
+                            product.stock -= quantity; // Reducir el stock
+                            stockElement.textContent = product.stock; // Actualizar el stock en la página
+
+                            // Guardar la compra en el archivo actions.json (simulado aquí)
+                            fetch('acciones.json', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    productId: product.id,
+                                    quantity: quantity,
+                                    date: new Date().toISOString().slice(0, 10) // Fecha actual
+                                })
+                            }).then(() => {
+                                alert(`Has comprado ${quantity} ${product.id}.`);
+                            }).catch(error => console.error('Error al guardar la compra:', error));
+                        } else {
+                            alert('Cantidad no disponible en stock.');
+                        }
+                    });
+
+                    cancelBtn.addEventListener('click', () => {
+                        quantityInput.value = 1; // Reiniciar la cantidad a 1
+                    });
+                });
+            });
+    </script>
+</body>
+</html>

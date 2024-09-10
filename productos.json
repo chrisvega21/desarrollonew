@@ -1,0 +1,8 @@
+[
+    { "id": "limpiaparabrisas", "stock": 20 },
+    { "id": "vidrios", "stock": 10 },
+    { "id": "llantas", "stock": 15 },
+    { "id": "timon", "stock": 8 },
+    { "id": "baterias", "stock": 5 },
+    { "id": "frenos", "stock": 6 }
+  ]
